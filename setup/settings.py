@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -77,11 +78,11 @@ TEMPLATES = [
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-# CORS_ORIGIN_ALLOW_ALL = True
-# CORS_ALLOW_CREDENTIALS = True
-# CSRF_TRUSTED_ORIGINS = ['https://api.dyfinancial.coupcode.tech', 'http://localhost', 'https://dyfinancial.coupcode.tech']
-# CSRF_COOKIE_SECURE = True
-# SESSION_COOKIE_SECURE = True
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000', 'http://localhost']
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 WSGI_APPLICATION = 'setup.wsgi.application'
 
@@ -131,7 +132,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = "/static/"
+MEDIA_URL = '/media/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

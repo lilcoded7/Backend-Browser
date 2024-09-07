@@ -16,9 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from searchendgine.views import DuckDuckAPIView
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/search/browser/', DuckDuckAPIView.as_view(), name='api_key')
 ]
+
+
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
